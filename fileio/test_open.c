@@ -4,6 +4,7 @@
 
 #include <fcntl.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 #define	FILE_MODE	(S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
 
@@ -17,12 +18,12 @@ int main(void)
 {
 	int fd;
 
-	char buf[] = "datadatadatadatadatadata";
+	char buf[] = "asdfghjkl";
 
 	if ((fd = open("file1.txt", O_RDWR|O_CREAT|O_APPEND, FILE_MODE)) == -1)
 		printf("打开文件错误\n");
 
-	 int len = strlen(buf);
+	int len = strlen(buf);
 	if (write(fd, buf, len) != len)
 		printf("写入文件错误\n");
 
